@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Chaton</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chaton.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ chaton.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ chaton.age }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('chaton_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('chaton_edit', { 'id': chaton.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

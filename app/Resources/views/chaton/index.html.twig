@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Chaton list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chaton in chatons %}
+            <tr>
+                <td><a href="{{ path('chaton_show', { 'id': chaton.id }) }}">{{ chaton.id }}</a></td>
+                <td>{{ chaton.firstName }}</td>
+                <td>{{ chaton.age }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('chaton_show', { 'id': chaton.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('chaton_edit', { 'id': chaton.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('chaton_meow', { 'id': chaton.id }) }}">meow</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('chaton_eat', { 'id': chaton.id }) }}">eat</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('chaton_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
